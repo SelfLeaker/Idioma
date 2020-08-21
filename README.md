@@ -1,5 +1,5 @@
 # Idioma
-Repositório para testes de tecnologias web (backend Python e frontend Javascript e bootstrap) com CRUD baseado no tema "linguagens".
+Repositório para testes de tecnologias web (backend Python e frontend Javascript usando bootstrap) com CRUD baseado no tema "linguagens".
 
 <h3>Tela Inicial</h3>
 
