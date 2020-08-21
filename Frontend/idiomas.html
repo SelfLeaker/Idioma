@@ -1,0 +1,470 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+		<title>Gerência de Informações Linguísticas</title>
+
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+			<a class="navbar-brand" href="#"><img src="imagens/idioma.png" height="50px"></a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+
+			<div class="collapse navbar-collapse font-weight-bold" id="navbarSupportedContent">
+
+				<span class="navbar-text">Idiomas</span>
+				
+				<ul class="navbar-nav ml-auto">
+
+        			<li class="nav-item active">
+
+						<a class="nav-link nav-item disabled" href="#">Início<span class="sr-only">(current)</span></a>
+
+					</li>
+
+					<li class="nav-item active">
+
+						<a class="nav-item nav-link" href="#" id="link-listar-info-idioma">Listar</a>
+
+					</li>
+
+					<li class="nav-item active">
+
+						<a class="nav-item nav-link" href="#" id="link-form-inclusao-info-idioma" data-toggle="modal" data-target="#modal-inclusao-info-idioma">Incluir</a>
+
+					</li>
+
+					<li class="nav-item active">
+
+						<a class="nav-item nav-link" href="#" id="link-form-alteracao-info-idioma" data-toggle="modal"
+						data-target="#modal-alteracao-info-idioma">Alterar</a>
+
+					</li>
+
+					<li class="nav-item active">
+
+						<a class="nav-item nav-link" href="#" id="link-form-exclusao-info-idioma" data-toggle="modal" data-target="#modal-exclusao-info-idioma">Excluir</a>
+
+					</li>
+			
+				</ul>
+
+			</div>
+
+		</nav>
+
+		<div id="corpo-principal">
+
+			<div id="mensagem-entrada-home" class="invisible">
+				Sistema de gerência de informações linguísticas.
+			</div>
+
+			<!-- Inclusão de informações sobre línguas -->
+
+			<div id="form-inclusao-info-idioma">
+
+				<!-- Modal -->
+
+				<div class="modal fade" id="modal-inclusao-info-idioma" tabindex="-1" role="dialog" aria-labelledby="modal-inclusao-info-idioma-label" aria-hidden="true">
+
+					<div class="modal-dialog modal-lg" role="document">
+
+						<div class="modal-content">
+							
+							<!-- Cabeçalho -->
+
+							<div class="modal-header">
+
+								<h5 class="modal-title" id="modal-inclusao-info-idioma-label">
+									Inclusão de informações sobre idiomas
+								</h5>
+
+								<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" id="btn-x-fechar-form-inclusao-info-idioma">
+									<span aria-hidden="true">&times;</span>
+								</button>
+
+							</div>
+
+							<!-- Corpo -->
+
+							<div class="modal-body modal-inclusao-body">
+							
+								<!-- Aviso do resultado após envio -->
+
+								<p class="modal-inclusao-msg-resultado"></p>
+
+								<!-- Texto -->
+
+									<!-- Nome -->
+
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+
+										<label class="input-group-text" for="modal-inclusao-txt-nome">Nome</label>
+
+									</div>
+
+									<input type="text" class="form-control" id="modal-inclusao-txt-nome">
+
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-inclusao-msg-erro-nome"></p>
+
+								<!-- Dropdown de múltipla escolha -->
+
+									<!-- Dificuldade -->
+
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="modal-inclusao-ddi-dificuldade">Dificuldade</label>
+									</div>
+
+									<select class="custom-select" id="modal-inclusao-ddi-dificuldade">
+
+										<option selected>Opções ...</option>
+										<option value="Fácil">Fácil</option>
+										<option value="Média">Média</option>
+										<option value="Difícil">Difícil</option>
+										<option value="Muito difícil">Muito difícil</option>
+										<option value="Extremamente difícil">Extremamente difícil</option>
+
+									</select>
+
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-inclusao-msg-erro-dificuldade"></p>
+
+									<!-- Popularidade -->
+									
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+
+										<label class="input-group-text" for="modal-inclusao-ddi-popularidade">Popularidade</label>
+
+									</div>
+
+									<select class="custom-select" id="modal-inclusao-ddi-popularidade">
+
+										<option selected>Opções ...</option>
+										<option value="Nada">Nada</option>
+										<option value="Pouco">Pouco</option>
+										<option value="Popular">Popular</option>
+										<option value="Muito popular">Muito popular</option>
+										<option value="Extremamente popular">Extremamente popular</option>
+
+									</select>
+
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-inclusao-msg-erro-popularidade"></p>
+
+							</div>
+							
+							<!-- Rodapé -->
+
+							<div class="modal-footer">
+							
+								<button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-fechar-form-inclusao-info-idioma">
+									Fechar
+								</button>
+
+								<button type="button" class="btn btn-primary modal-inclusao-enviar-info" id="btn-enviar-form-inclusao-info-idioma">
+									Enviar
+								</button>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Alteração de informações sobre línguas -->
+
+			<div id="form-alteracao-info-idioma">
+
+				<!-- Modal -->
+
+				<div class="modal fade" id="modal-alteracao-info-idioma" tabindex="-1" role="dialog" aria-labelledby="modal-alteracao-info-idioma-label" aria-hidden="true">
+
+					<div class="modal-dialog modal-lg" role="document">
+
+						<div class="modal-content">
+							
+							<!-- Cabeçalho -->
+
+							<div class="modal-header">
+
+								<h5 class="modal-title" id="modal-alteracao-info-idioma-label">
+									Alteração de informações sobre idiomas
+								</h5>
+
+								<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" id="btn-x-fechar-form-alteracao-info-idioma">
+									<span aria-hidden="true">&times;</span>
+								</button>
+
+							</div>
+
+							<!-- Corpo -->
+
+							<div class="modal-body modal-alteracao-body">
+							
+								<!-- Aviso do resultado após envio -->
+
+								<p class="modal-alteracao-msg-resultado"></p>
+
+								<!-- Inteiro -->
+
+									<!-- Identificador -->
+
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+
+										<label class="input-group-text" for="modal-alteracao-int-id">Identificador (número inteiro maior ou igual a 1)</label>
+
+									</div>
+
+									<input type="number" class="form-control" id="modal-alteracao-int-id" min="1" step="1" data-bind="value:modal-alteracao-int-id">
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-alteracao-msg-erro-id"></p>
+
+								<!-- Texto -->
+
+									<!-- Nome -->
+
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+
+										<label class="input-group-text" for="modal-alteracao-txt-nome">Nome</label>
+
+									</div>
+
+									<input type="text" class="form-control" id="modal-alteracao-txt-nome">
+
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-alteracao-msg-erro-nome"></p>
+
+								<!-- Dropdown de múltipla escolha -->
+
+									<!-- Dificuldade -->
+
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+										<label class="input-group-text" for="modal-alteracao-ddi-dificuldade">Dificuldade</label>
+									</div>
+
+									<select class="custom-select" id="modal-alteracao-ddi-dificuldade">
+
+										<option selected>Opções ...</option>
+										<option value="Fácil">Fácil</option>
+										<option value="Média">Média</option>
+										<option value="Difícil">Difícil</option>
+										<option value="Muito difícil">Muito difícil</option>
+										<option value="Extremamente difícil">Extremamente difícil</option>
+
+									</select>
+
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-alteracao-msg-erro-dificuldade"></p>
+
+									<!-- Popularidade -->
+									
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+
+										<label class="input-group-text" for="modal-alteracao-ddi-popularidade">Popularidade</label>
+
+									</div>
+
+									<select class="custom-select" id="modal-alteracao-ddi-popularidade">
+
+										<option selected>Opções ...</option>
+										<option value="Nada">Nada</option>
+										<option value="Pouco">Pouco</option>
+										<option value="Popular">Popular</option>
+										<option value="Muito popular">Muito popular</option>
+										<option value="Extremamente popular">Extremamente popular</option>
+
+									</select>
+
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-alteracao-msg-erro-popularidade"></p>
+
+							</div>
+							
+							<!-- Rodapé -->
+
+							<div class="modal-footer">
+							
+								<button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-fechar-form-alteracao-info-idioma">
+									Fechar
+								</button>
+
+								<button type="button" class="btn btn-primary modal-alteracao-enviar-info" id="btn-enviar-form-alteracao-info-idioma">
+									Enviar
+								</button>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- Exclusão de informações sobre línguas -->
+
+			<div id="form-exclusao-info-idioma">
+
+				<!-- Modal -->
+
+				<div class="modal fade" id="modal-exclusao-info-idioma" tabindex="-1" role="dialog" aria-labelledby="modal-exclusao-info-idioma-label" aria-hidden="true">
+
+					<div class="modal-dialog modal-lg" role="document">
+
+						<div class="modal-content">
+							
+							<!-- Cabeçalho -->
+
+							<div class="modal-header">
+
+								<h5 class="modal-title" id="modal-exclusao-info-idioma-label">
+									Exclusão de informações sobre idiomas
+								</h5>
+
+								<button type="button" class="close" data-dismiss="modal" aria-label="Fechar" id="btn-x-fechar-form-exclusao-info-idioma">
+									<span aria-hidden="true">&times;</span>
+								</button>
+
+							</div>
+
+							<!-- Corpo -->
+
+							<div class="modal-body modal-exclusao-body">
+							
+								<!-- Aviso do resultado após envio -->
+
+								<p class="modal-exclusao-msg-resultado"></p>
+
+								<!-- Inteiro -->
+
+									<!-- Identificador -->
+
+								<div class="input-group mb-3">
+
+									<div class="input-group-prepend">
+
+										<label class="input-group-text" for="modal-exclusao-int-id">Identificador (número inteiro maior ou igual a 1)</label>
+
+									</div>
+
+									<input type="number" class="form-control" id="modal-exclusao-int-id" min="1" step="1" data-bind="value:modal-exclusao-int-id">
+
+								</div>
+
+								<!-- Aviso de erro sobre o dado apresentado -->
+
+								<p class="modal-exclusao-msg-erro-id"></p>
+
+							</div>
+							
+							<!-- Rodapé -->
+
+							<div class="modal-footer">
+							
+								<button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-fechar-form-exclusao-info-idioma">
+									Fechar
+								</button>
+
+								<button type="button" class="btn btn-primary modal-exclusao-enviar-info" id="btn-enviar-form-exclusao-info-idioma">
+									Enviar
+								</button>
+
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<table id="tabela-idiomas" class="table invisible">
+
+				<thead>
+					<tr>
+						<th scope="col">Id</th>
+						<th scope="col">Nome</th>
+						<th scope="col">Dificuldade</th>
+						<th scope="col">Popularidade</th>
+					</tr>
+				</thead>
+			
+				<tbody id="tabela-idiomas-corpo-um">
+
+					<!-- conteúdo adicionado dinamicamente -->
+
+				</tbody>
+
+			</table>
+
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="js/logica.js"></script>
+
+	</body>
+</html>
