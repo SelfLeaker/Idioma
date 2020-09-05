@@ -2,12 +2,12 @@
 Aplicação web de gerencia linguística informacional.
 
 <h2>Tecnologias utilizadas</h2>
-- Python&nbsp;
-- Javascript&nbsp;
-- SQLite&nbsp;
+- Python<br />
+- Javascript<br />
+- SQLite<br />
 
 <h2>Dependências</h2>
-- Bootstrap&nbsp;
+- Bootstrap<br />
 
 <h3>Tela Inicial</h3>
 
