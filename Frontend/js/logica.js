@@ -1,4 +1,27 @@
 
+function remover_visibilidade_tabela_paises(){
+
+	$("#mensagem-entrada-home").removeClass("invisible");
+	$("#mensagem-entrada-home").addClass("invisible");
+
+	$("#tabela-paises").removeClass("invisible");
+	$("#tabela-paises").addClass("invisible");
+
+	$("#tabela-paises").css("display", "none");
+
+}
+
+function remover_visibilidade_tabela_idiomas(){
+
+	$("#mensagem-entrada-home").removeClass("invisible");
+	$("#mensagem-entrada-home").addClass("invisible");
+
+	$("#tabela-idiomas").removeClass("invisible");
+	$("#tabela-idiomas").addClass("invisible");
+
+	$("#tabela-idiomas").css("display", "none");
+
+}
 
 function logica_modal_excluir_info_idioma(){
 	
@@ -139,14 +162,14 @@ function logica_modal_alterar_info_idioma(){
 	$('.modal-alteracao-msg-erro-popularidade').html('');
 	$('.modal-alteracao-msg-resultado').html('');
 	
-	var id = $('#modal-alteracao-int-id').val();
+	var idioma_id = $('#modal-alteracao-int-id').val();
 	var nome = $('#modal-alteracao-txt-nome').val();
 	var dificuldade = $('#modal-alteracao-ddi-dificuldade').val();
 	var popularidade = $('#modal-alteracao-ddi-popularidade').val();
 
 	var falhou = false;
 
-	if(id === null || id.trim() == ''){
+	if(idioma_id === null || idioma_id.trim() == ''){
 
 		$(".modal-alteracao-msg-erro-id").html('<span style="color:red;">Por favor, preencha o campo de \'id\'.</span>');
 
@@ -194,7 +217,7 @@ function logica_modal_alterar_info_idioma(){
 
 		url: 'http://localhost:5000/alterar_info_idioma',
 		type: 'GET',
-		data: 'id='+id,
+		data: 'id='+idioma_id,
 		async: false,
 		fail: function(){
 			alert("Ocorreu um erro inesperado, tente novamente mais tarde.")
@@ -208,7 +231,7 @@ function logica_modal_alterar_info_idioma(){
 
 					url: 'http://localhost:5000/alterar_info_idioma',
 					type: 'POST',
-					data: JSON.stringify({nome, dificuldade, popularidade, id}),
+					data: JSON.stringify({nome, dificuldade, popularidade, idioma_id}),
 					contentType: 'application/json; charset=utf-8',
 					dataType: 'json',
 					async: false,
@@ -268,12 +291,12 @@ function logica_tabela_listar_info_idioma(){
 
 			for (var i in info_recebida) {
 
-				linha = "<tr>" +
-				"<th>" + info_recebida[i].id + "</th>" +
-				"<td>" + info_recebida[i].nome + "</td>" +
-				"<td>" + info_recebida[i].dificuldade + "</td>" +
-				"<td>" + info_recebida[i].popularidade + "</td>" +
-				"</tr>";
+				linha = `<tr>\
+				<th>${info_recebida[i].idioma_id}</th>\
+				<td>${info_recebida[i].nome}</td>\
+				<td>${info_recebida[i].dificuldade}</td>\
+				<td>${info_recebida[i].popularidade}</td>\
+				</tr>`;
 
 				linhas = linhas + linha;
 
@@ -284,6 +307,63 @@ function logica_tabela_listar_info_idioma(){
 			$("#mensagem-entrada-home").addClass("invisible");
 
 			$("#tabela-idiomas").removeClass("invisible");
+
+			$("#tabela-idiomas").css("display", "");
+
+			remover_visibilidade_tabela_paises();
+
+		}
+
+	});
+
+}
+
+function logica_tabela_listar_info_paises(){
+
+	$.ajax({
+
+		url: 'http://localhost:5000/listar_info_paises',
+		method: 'GET',
+		dataType: 'json',
+		async: false,
+		error: function(){
+			alert("Erro na leitura dos dados. Possível má formação de dados desde o back-end.");
+		},
+		success: function(info_recebida){
+
+			linhas = "";
+
+			for (var i in info_recebida) {
+
+				lista_linguas_do_pais = [];
+
+				for (var j in info_recebida[i].linguas_do_pais){
+
+					lista_linguas_do_pais.push(info_recebida[i].linguas_do_pais[j].nome);
+
+				}
+
+				console.log(lista_linguas_do_pais);
+
+				linha = `<tr>\
+				<th>${info_recebida[i].pais_id}</th>\
+				<td>${info_recebida[i].nome}</td>\
+				<td>${lista_linguas_do_pais.toString()}</td>\
+				</tr>`;
+
+				linhas = linhas + linha;
+
+			}
+
+			$("#tabela-paises-corpo-um").html(linhas);
+
+			$("#mensagem-entrada-home").addClass("invisible");
+
+			$("#tabela-paises").removeClass("invisible");
+
+			$("#tabela-paises").css("display", "");
+
+			remover_visibilidade_tabela_idiomas();
 
 		}
 
@@ -305,5 +385,7 @@ $(document).ready(function(){
 	$("#mensagem-entrada-home").removeClass("invisible");
 
 	$("#link-listar-info-idioma").click(logica_tabela_listar_info_idioma);
+
+	$("#link-listar-info-paises").click(logica_tabela_listar_info_paises);
 
 });

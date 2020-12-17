@@ -30,8 +30,13 @@ class Pais(db.Model):
 
 	def json(self):
 
-		for idioma in self.linguas_do_pais:
-			print(idioma.json())
+		return {
+
+			"pais_id": self.pais_id,
+			"nome": self.nome,
+			"linguas_do_pais": [idioma.json() for idioma in self.linguas_do_pais]
+
+		}
 
 		"""
 
@@ -66,7 +71,7 @@ class Idioma(db.Model):
 	def json(self):
 
 		return {
-			"id": self.id,
+			"idioma_id": self.idioma_id,
 			"nome": self.nome,
 			"dificuldade": self.dificuldade,
 			"popularidade": self.popularidade
@@ -127,10 +132,13 @@ if __name__ == "__main__":
 	db.session.commit()
 
 	for pais in db.session.query(Pais):
-		print(str(pais))
-		#for lingua in pais.linguas_do_pais:
-		#	print(str(lingua))
-	
+		print(pais.json(), end="\n\n")
+
+	db.session.query(Idioma).filter(Idioma.idioma_id == ingles.idioma_id)
+
+	#for lingua in pais.linguas_do_pais:
+	#	print(str(lingua))
+
 	#db.session.query(User.name).filter(User.id == 1).first()
 	#idioma = db.session.query(Idioma).filter(Idioma.id == id)
 	
